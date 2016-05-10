@@ -36,6 +36,19 @@ class TypeformController < ApplicationController
   def notify
     p '======= Notify Start ========'
     p params
-    p '======= Notify End ========'
+    p '======= Notify End ========='
+    # fetch answers
+    if params['answers'].present?
+      first_name = params['answers'][0]['value']
+      last_name = params['answers'][1]['value']
+      telephone_no = params['answers'][2]['value']
+      email=params['answers'][3]['value']
+    end
+    # I tried campaign id of talkpush and found id 100 is useful.
+    campaign_id =100
+    talkpush_api_params = "api_key=48530ba23eef6b45ffbc95d7c20a60b9&api_secret=e2f724ba060f82ddf58923af494578a7&campaign_invitation[first_name]=#{first_name}&campaign_invitation[last_name]=#{last_name}&campaign_invitation[user_phone_number]=#{telephone_no}&campaign_invitation[email]=#{email}&source=Simon"
+    c = Curl::Easy.http_post("http://my.talkpush.com/api/talkpush_services/campaigns/#{campaign_id}/campaign_invitations?"+talkpush_api_params) do |curl|
+    end
+    c.perform
   end
 end
