@@ -1,4 +1,5 @@
 class TypeformController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     json= {
       "title": "My first typeform",
