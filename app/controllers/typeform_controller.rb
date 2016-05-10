@@ -19,7 +19,8 @@ class TypeformController < ApplicationController
           "type": "short_text",
           "question": "What is your email address?"
         }
-      ]
+      ],
+      "webhook_submit_url": "https://typeform-simon.herokuapp.com/typeform/notify"
     }
     c = Curl::Easy.http_post("https://api.typeform.io/latest/forms",json.to_json) do |curl|
       curl.headers["X-API-TOKEN"] = "1cef87c8fd76d4afa3cb5420f2f95b23"
@@ -31,5 +32,9 @@ class TypeformController < ApplicationController
   end
 
 
-
+  def notify
+    p '======= Notify Start ========'
+    p params
+    p '======= Notify End ========'
+  end
 end
