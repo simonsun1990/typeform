@@ -45,7 +45,7 @@ class TypeformController < ApplicationController
       email=params['answers'][3]['value']
     end
     # I tried campaign id of talkpush and found id 100 is useful.
-    campaign_id =100
+    campaign_id = c086e83a492ec2c7299e41726439ba7a
     talkpush_api_params = "api_key=48530ba23eef6b45ffbc95d7c20a60b9&api_secret=e2f724ba060f82ddf58923af494578a7&campaign_invitation[first_name]=#{first_name}&campaign_invitation[last_name]=#{last_name}&campaign_invitation[user_phone_number]=#{telephone_no}&campaign_invitation[email]=#{email}&source=Simon"
     p '========'
     p talkpush_api_params
